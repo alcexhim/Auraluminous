@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E5D3C246-D8BE-4CA8-8951-F9E57E96AE47}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Auraluminous</RootNamespace>
+    <AssemblyName>Auraluminous</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ChannelEditDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChannelEditDialog.Designer.cs">
+      <DependentUpon>ChannelEditDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FixtureBrowserDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FixtureBrowserDialog.Designer.cs">
+      <DependentUpon>FixtureBrowserDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrameEditDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrameEditDialog.Designer.cs">
+      <DependentUpon>FrameEditDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GoToDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GoToDialog.Designer.cs">
+      <DependentUpon>GoToDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainWindow.Designer.cs">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShowEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ShowEditor.Designer.cs">
+      <DependentUpon>ShowEditor.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="ChannelEditDialog.resx">
+      <DependentUpon>ChannelEditDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FixtureBrowserDialog.resx">
+      <DependentUpon>FixtureBrowserDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrameEditDialog.resx">
+      <DependentUpon>FrameEditDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GoToDialog.resx">
+      <DependentUpon>GoToDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainWindow.resx">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="ShowEditor.resx">
+      <DependentUpon>ShowEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Libraries\AwesomeControls\AwesomeControls\AwesomeControls.csproj">
+      <Project>{617D9EB5-CA93-45D6-AA6B-5A012B7698AC}</Project>
+      <Name>AwesomeControls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Libraries\Enttec.OpenDMX\Enttec.OpenDMX\Enttec.OpenDMX.csproj">
+      <Project>{0936544e-e909-4e70-870c-2f60acba480e}</Project>
+      <Name>Enttec.OpenDMX</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Libraries\FTD2XX\FTD2XX\FTD2XX.csproj">
+      <Project>{e735d457-50d8-4958-b68c-79617595b023}</Project>
+      <Name>FTD2XX</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Libraries\MonoMidi\MonoMidi\MonoMidi.csproj">
+      <Project>{ddc1ce36-60e0-4b09-a288-cb14ace252dd}</Project>
+      <Name>MonoMidi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Libraries\Surodoine\Surodoine\Surodoine.csproj">
+      <Project>{e0897b7b-617a-4709-a4c6-fc0f6b441b2a}</Project>
+      <Name>Surodoine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Libraries\UniversalEditor\Libraries\UniversalEditor.Core\UniversalEditor.Core.csproj">
+      <Project>{a92d520b-ffa3-4464-8cf6-474d18959e03}</Project>
+      <Name>UniversalEditor.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Libraries\UniversalEditor\Plugins\UniversalEditor.Plugins.Lighting\UniversalEditor.Plugins.Lighting.csproj">
+      <Project>{1c24f4f8-9d94-4783-b5c0-11564d70b76a}</Project>
+      <Name>UniversalEditor.Plugins.Lighting</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Libraries\UniversalEditor\Plugins\UniversalEditor.Plugins.Multimedia\UniversalEditor.Plugins.Multimedia.csproj">
+      <Project>{be4d0ba3-0888-42a5-9c09-fc308a4509d2}</Project>
+      <Name>UniversalEditor.Plugins.Multimedia</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Auraluminous.Engine\Auraluminous.Engine.csproj">
+      <Project>{88676fe6-d6c0-4480-bea0-a649d14cb1bd}</Project>
+      <Name>Auraluminous.Engine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Libraries\UniversalEditor\Plugins\UniversalEditor.Plugins.Auraluminous\UniversalEditor.Plugins.Auraluminous.csproj">
+      <Project>{ef886e1a-d553-43da-857c-29da0d6e0dae}</Project>
+      <Name>UniversalEditor.Plugins.Auraluminous</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

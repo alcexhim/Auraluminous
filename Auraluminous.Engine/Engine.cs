@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using UniversalEditor;
+using UniversalEditor.Accessors;
 using UniversalEditor.DataFormats.Auraluminous.Script;
 using UniversalEditor.ObjectModels.Auraluminous.Script;
 using UniversalEditor.ObjectModels.Lighting.Fixture;
@@ -39,7 +41,7 @@ namespace Auraluminous
 
             mvarScript = new ScriptObjectModel();
             
-            UniversalEditor.Accessors.File.FileAccessor.Load(FileName, mvarScript, apdf, true);
+            Document.Load(mvarScript, apdf, new FileAccessor(FileName), true);
 
             mvarAudio = UniversalEditor.Common.Reflection.GetAvailableObjectModel<WaveformAudioObjectModel>(mvarScript.AudioFileName);
         }

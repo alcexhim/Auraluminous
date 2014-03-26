@@ -53,7 +53,12 @@ namespace UniversalEditor.ObjectModels.Auraluminous.Script
             {
                 mvarCurrentIndex = IndexOf(frame);
             }
-        }
+
+			public void Reset()
+			{
+				mvarCurrentIndex = 0;
+			}
+		}
 
         private TimeSpan mvarTimeSpan = new TimeSpan();
         public TimeSpan TimeSpan { get { return mvarTimeSpan; } set { mvarTimeSpan = value; } }

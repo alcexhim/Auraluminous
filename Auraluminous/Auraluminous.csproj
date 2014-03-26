@@ -37,11 +37,9 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data" />
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChannelEditDialog.cs">
@@ -120,9 +118,53 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\AwesomeControls\AwesomeControls\AwesomeControls.csproj">
+      <Project>{617d9eb5-ca93-45d6-aa6b-5a012b7698ac}</Project>
+      <Name>AwesomeControls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Enttec.OpenDMX\Enttec.OpenDMX\Enttec.OpenDMX.csproj">
+      <Project>{0936544e-e909-4e70-870c-2f60acba480e}</Project>
+      <Name>Enttec.OpenDMX</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\FTD2XX\FTD2XX\FTD2XX.csproj">
+      <Project>{e735d457-50d8-4958-b68c-79617595b023}</Project>
+      <Name>FTD2XX</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\MonoMidi\MonoMidi\MonoMidi.csproj">
+      <Project>{ddc1ce36-60e0-4b09-a288-cb14ace252dd}</Project>
+      <Name>MonoMidi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Surodoine\Surodoine\Surodoine.csproj">
+      <Project>{e0897b7b-617a-4709-a4c6-fc0f6b441b2a}</Project>
+      <Name>Surodoine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\UniversalEditor\CSharp\Libraries\UniversalEditor.Compression\UniversalEditor.Compression.csproj">
+      <Project>{3f664673-7e22-4486-9ad0-fc81861d0b78}</Project>
+      <Name>UniversalEditor.Compression</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\UniversalEditor\CSharp\Libraries\UniversalEditor.Core\UniversalEditor.Core.csproj">
+      <Project>{2d4737e6-6d95-408a-90db-8dff38147e85}</Project>
+      <Name>UniversalEditor.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\UniversalEditor\CSharp\Plugins\UniversalEditor.Essential\UniversalEditor.Essential.csproj">
+      <Project>{30467e5c-05bc-4856-aadc-13906ef4cadd}</Project>
+      <Name>UniversalEditor.Essential</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\UniversalEditor\CSharp\Plugins\UniversalEditor.Plugins.Lighting\UniversalEditor.Plugins.Lighting.csproj">
+      <Project>{1c24f4f8-9d94-4783-b5c0-11564d70b76a}</Project>
+      <Name>UniversalEditor.Plugins.Lighting</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\UniversalEditor\CSharp\Plugins\UniversalEditor.Plugins.Multimedia\UniversalEditor.Plugins.Multimedia.csproj">
+      <Project>{be4d0ba3-0888-42a5-9c09-fc308a4509d2}</Project>
+      <Name>UniversalEditor.Plugins.Multimedia</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Auraluminous.Engine\Auraluminous.Engine.csproj">
       <Project>{88676fe6-d6c0-4480-bea0-a649d14cb1bd}</Project>
       <Name>Auraluminous.Engine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UniversalEditor.Plugins.Auraluminous\UniversalEditor.Plugins.Auraluminous.csproj">
+      <Project>{ef886e1a-d553-43da-857c-29da0d6e0dae}</Project>
+      <Name>UniversalEditor.Plugins.Auraluminous</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

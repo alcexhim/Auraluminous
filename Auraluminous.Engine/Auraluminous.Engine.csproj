@@ -56,6 +56,10 @@
       <Project>{2d4737e6-6d95-408a-90db-8dff38147e85}</Project>
       <Name>UniversalEditor.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\UniversalEditor\CSharp\Plugins\UniversalEditor.Essential\UniversalEditor.Essential.csproj">
+      <Project>{30467e5c-05bc-4856-aadc-13906ef4cadd}</Project>
+      <Name>UniversalEditor.Essential</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\UniversalEditor\CSharp\Plugins\UniversalEditor.Plugins.Lighting\UniversalEditor.Plugins.Lighting.csproj">
       <Project>{1c24f4f8-9d94-4783-b5c0-11564d70b76a}</Project>
       <Name>UniversalEditor.Plugins.Lighting</Name>
@@ -63,6 +67,10 @@
     <ProjectReference Include="..\..\UniversalEditor\CSharp\Plugins\UniversalEditor.Plugins.Multimedia\UniversalEditor.Plugins.Multimedia.csproj">
       <Project>{be4d0ba3-0888-42a5-9c09-fc308a4509d2}</Project>
       <Name>UniversalEditor.Plugins.Multimedia</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UniversalEditor.Plugins.Auraluminous\UniversalEditor.Plugins.Auraluminous.csproj">
+      <Project>{ef886e1a-d553-43da-857c-29da0d6e0dae}</Project>
+      <Name>UniversalEditor.Plugins.Auraluminous</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

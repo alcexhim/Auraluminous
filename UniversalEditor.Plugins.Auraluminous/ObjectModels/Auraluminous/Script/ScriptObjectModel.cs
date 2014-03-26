@@ -18,6 +18,12 @@ namespace UniversalEditor.ObjectModels.Auraluminous.Script
             clone.AudioFileName = (mvarAudioFileName.Clone() as string);
         }
 
+		private string mvarTitle = String.Empty;
+		public string Title { get { return mvarTitle; } set { mvarTitle = value; } }
+
+		private string mvarArtist = String.Empty;
+		public string Artist { get { return mvarArtist; } set { mvarArtist = value; } }
+
         private string mvarAudioFileName = String.Empty;
         public string AudioFileName { get { return mvarAudioFileName; } set { mvarAudioFileName = value; } }
 

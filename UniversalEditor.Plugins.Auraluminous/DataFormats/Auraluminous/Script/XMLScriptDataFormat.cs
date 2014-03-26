@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using UniversalEditor.Accessors;
 using UniversalEditor.DataFormats.Markup.XML;
 using UniversalEditor.ObjectModels.Auraluminous.Script;
 using UniversalEditor.ObjectModels.Lighting.Fixture;
@@ -27,7 +28,7 @@ namespace UniversalEditor.DataFormats.Auraluminous.Script
             ScriptObjectModel script = (objectModels.Pop() as ScriptObjectModel);
 
             string BasePath = String.Empty;
-            UniversalEditor.Accessors.File.FileAccessor fa = (script.Accessor as UniversalEditor.Accessors.File.FileAccessor);
+            FileAccessor fa = (script.Accessor as FileAccessor);
             if (fa != null)
             {
                 BasePath = System.IO.Path.GetDirectoryName(fa.FileName);

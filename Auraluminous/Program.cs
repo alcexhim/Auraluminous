@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using UniversalEditor;
+using UniversalEditor.Accessors;
 using UniversalEditor.DataFormats.Lighting.Fixture.Auraluminous;
 using UniversalEditor.ObjectModels.Lighting.Fixture;
 
@@ -190,7 +192,7 @@ namespace Auraluminous
             foreach (string file in FixtureDefinitions)
             {
                 FixtureObjectModel fixture = new FixtureObjectModel();
-                UniversalEditor.Accessors.File.FileAccessor.Load(file, fixture, afdf, true);
+                Document.Load(fixture, afdf, new FileAccessor(file), true);
                 mvarEngine.Fixtures.Add(fixture);
             }
         }

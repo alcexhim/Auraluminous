@@ -52,7 +52,7 @@
       <Project>{a92d520b-ffa3-4464-8cf6-474d18959e03}</Project>
       <Name>UniversalEditor.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Libraries\UniversalEditor\Plugins\UniversalEditor.Plugins.Lighting\UniversalEditor.Plugins.Lighting.csproj">
+    <ProjectReference Include="..\..\UniversalEditor\CSharp\Plugins\UniversalEditor.Plugins.Lighting\UniversalEditor.Plugins.Lighting.csproj">
       <Project>{1c24f4f8-9d94-4783-b5c0-11564d70b76a}</Project>
       <Name>UniversalEditor.Plugins.Lighting</Name>
     </ProjectReference>

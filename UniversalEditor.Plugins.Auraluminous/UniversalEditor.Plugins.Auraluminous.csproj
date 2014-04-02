@@ -37,8 +37,8 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataFormats\Lighting\Fixture\Auraluminous\XMLFixtureDataFormat.cs" />
     <Compile Include="DataFormats\Auraluminous\Script\XMLScriptDataFormat.cs" />
+    <Compile Include="DataFormats\Lighting\Fixture\Auraluminous\XMLFixtureDataFormat.cs" />
     <Compile Include="ObjectModels\Auraluminous\Script\Channel.cs" />
     <Compile Include="ObjectModels\Auraluminous\Script\Frame.cs" />
     <Compile Include="ObjectModels\Auraluminous\Script\Fixture.cs" />

@@ -48,6 +48,12 @@
     <Compile Include="ChannelEditDialog.Designer.cs">
       <DependentUpon>ChannelEditDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\OptionsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\OptionsDialog.Designer.cs">
+      <DependentUpon>OptionsDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="FixtureBrowserDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,6 +88,9 @@
     </Compile>
     <EmbeddedResource Include="ChannelEditDialog.resx">
       <DependentUpon>ChannelEditDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\OptionsDialog.resx">
+      <DependentUpon>OptionsDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FixtureBrowserDialog.resx">
       <DependentUpon>FixtureBrowserDialog.cs</DependentUpon>
@@ -121,14 +130,6 @@
     <ProjectReference Include="..\..\AwesomeControls\AwesomeControls\AwesomeControls.csproj">
       <Project>{617d9eb5-ca93-45d6-aa6b-5a012b7698ac}</Project>
       <Name>AwesomeControls</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Enttec.OpenDMX\Enttec.OpenDMX\Enttec.OpenDMX.csproj">
-      <Project>{0936544e-e909-4e70-870c-2f60acba480e}</Project>
-      <Name>Enttec.OpenDMX</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\FTD2XX\FTD2XX\FTD2XX.csproj">
-      <Project>{e735d457-50d8-4958-b68c-79617595b023}</Project>
-      <Name>FTD2XX</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\MonoMidi\MonoMidi\MonoMidi.csproj">
       <Project>{ddc1ce36-60e0-4b09-a288-cb14ace252dd}</Project>

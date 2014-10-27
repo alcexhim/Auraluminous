@@ -31,13 +31,6 @@ namespace Auraluminous
             AwesomeControls.Theming.Theme.CurrentTheme = theme;
 
             InitializeFixtures();
-            try
-            {
-                mvarEngine.OpenDMXInterface = new Enttec.OpenDMX.Interface(0);
-            }
-            catch
-            {
-            }
 
             Program.Engine.AudioPlayer.StateChanged += AudioPlayer_StateChanged;
 

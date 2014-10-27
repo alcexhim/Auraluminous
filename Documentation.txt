@@ -1,0 +1,5 @@
+uDMX:
+https://code.google.com/p/udmx/source/browse/trunk/puredata/uDMX.c
+
+libusb (USE VERSION 0.1):
+http://www.libusb.org/

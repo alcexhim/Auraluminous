@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Auraluminous</RootNamespace>
     <AssemblyName>Auraluminous</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -112,10 +113,12 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="ShowEditor.resx">
       <DependentUpon>ShowEditor.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -147,7 +150,7 @@
       <Project>{2d4737e6-6d95-408a-90db-8dff38147e85}</Project>
       <Name>UniversalEditor.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\UniversalEditor\CSharp\Plugins\UniversalEditor.Essential\UniversalEditor.Essential.csproj">
+    <ProjectReference Include="..\..\UniversalEditor\CSharp\Libraries\UniversalEditor.Essential\UniversalEditor.Essential.csproj">
       <Project>{30467e5c-05bc-4856-aadc-13906ef4cadd}</Project>
       <Name>UniversalEditor.Essential</Name>
     </ProjectReference>

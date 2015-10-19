@@ -48,7 +48,7 @@ namespace Auraluminous
 		}
 		public void Play()
 		{
-			lighting.OpenDMXInterface = mvarOpenDMXInterface;
+			lighting.CurrentDevice = mvarOpenDMXInterface;
 			lighting.AudioPlayer = mvarAudioPlayer;
 			lighting.Script = mvarScript;
 			mvarScript.Frames.Reset();

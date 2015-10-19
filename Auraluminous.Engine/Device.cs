@@ -9,7 +9,8 @@ namespace Auraluminous
 	{
 		public static Device[] GetDevices()
 		{
-
+			Device[] types = Common.Reflection.GetAvailableInstances<Device>();
+			return types;
 		}
 		public static Device GetDefaultDevice()
 		{
@@ -18,6 +19,17 @@ namespace Auraluminous
 			return devices[0];
 		}
 
-		protected abstract void Write(byte[] data, int offset, int length);
+		protected abstract void SetChannelValueInternal(int address, byte value);
+
+		public void SetChannelValue(int initialAddress, int relativeAddress, byte value)
+		{
+			SetChannelValueInternal(initialAddress + relativeAddress, value);
+		}
+
+		protected abstract void ResetInternal();
+		public void Reset()
+		{
+			ResetInternal();
+		}
 	}
 }

@@ -8,10 +8,14 @@ namespace Auraluminous.Plugins.Enttec
 	{
 		private global::Enttec.OpenDMX.Interface intf = new global::Enttec.OpenDMX.Interface(0);
 
-		protected override void Write(byte[] data, int offset, int length)
+		protected override void SetChannelValueInternal(int address, byte value)
 		{
 			// Enttec OpenDMX does not support partial data streams
-			intf.Write(data);
+			intf.SetChannelValue(0, address, value);
+		}
+
+		protected override void ResetInternal()
+		{
 		}
 	}
 }

@@ -35,6 +35,9 @@ namespace Auraluminous
         private AudioPlayer mvarAudioPlayer = null;
         public AudioPlayer AudioPlayer { get { return mvarAudioPlayer; } set { mvarAudioPlayer = value; } }
 
+		private Device mvarCurrentDevice = null;
+		public Device CurrentDevice { get { return mvarCurrentDevice; } set { mvarCurrentDevice = value; } }
+
         private void tLightingThread_ThreadStart()
         {
             if (mvarScript == null) return;
@@ -71,9 +74,6 @@ namespace Auraluminous
             }
         }
 
-        private Enttec.OpenDMX.Interface mvarOpenDMXInterface = null;
-        public Enttec.OpenDMX.Interface OpenDMXInterface { get { return mvarOpenDMXInterface; } set { mvarOpenDMXInterface = value; } }
-
         private void DisplayFrame(Frame frame)
         {
             try
@@ -82,7 +82,7 @@ namespace Auraluminous
                 {
                     foreach (Channel channel in fixture.Channels)
                     {
-                        mvarOpenDMXInterface.SetChannelValue(fixture.Fixture.InitialAddress, channel.ChannelObject.RelativeAddress, channel.Value);
+                        mvarCurrentDevice.SetChannelValue(fixture.Fixture.InitialAddress, channel.ChannelObject.RelativeAddress, channel.Value);
                     }
                 }
             }

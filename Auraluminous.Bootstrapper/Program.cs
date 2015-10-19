@@ -22,9 +22,9 @@ namespace UniversalEditor.Bootstrapper
 				// immediately.
 				(new BootstrapperInstance()).Main();
 			}
-			catch
+			catch (System.IO.FileNotFoundException ex)
 			{
-				MessageBox.Show("The file 'UniversalEditor.UserInterface.dll' is required for this software to run, but is either missing or corrupted.  Please re-install the software and try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("The file '" + ex.FileName + "' is required for this software to run, but is either missing or corrupted.  Please re-install the software and try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return;
 			}
 		}

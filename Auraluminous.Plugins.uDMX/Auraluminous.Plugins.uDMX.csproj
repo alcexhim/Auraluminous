@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Auraluminous.Plugins.uDMX</RootNamespace>
     <AssemblyName>Auraluminous.Plugins.uDMX</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -41,7 +41,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\uDMX\uDMX.csproj">
       <Project>{ac9e14d6-7ef0-4b5f-9645-b033d63de3f2}</Project>
-      <Name>uDMX %28uDMX\uDMX%29</Name>
+      <Name>uDMX</Name>
     </ProjectReference>
     <ProjectReference Include="..\Auraluminous.Engine\Auraluminous.Engine.csproj">
       <Project>{88676fe6-d6c0-4480-bea0-a649d14cb1bd}</Project>

@@ -11,13 +11,13 @@ namespace UniversalEditor.DataFormats.Lighting.Fixture.Auraluminous
     public class XMLFixtureDataFormat : XMLDataFormat
     {
         private static DataFormatReference _dfr = null;
-        public override DataFormatReference MakeReference()
+        protected override DataFormatReference MakeReferenceInternal()
         {
             if (_dfr == null)
             {
                 _dfr = new DataFormatReference(GetType());
                 _dfr.Capabilities.Add(typeof(FixtureObjectModel), DataFormatCapabilities.All);
-                _dfr.Filters.Add("Auraluminous fixture", new string[] { "*.alf" });
+                // _dfr.Filters.Add("Auraluminous fixture", new string[] { "*.alf" });
             }
             return _dfr;
         }

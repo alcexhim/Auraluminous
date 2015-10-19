@@ -19,8 +19,6 @@ namespace Auraluminous.Dialogs
 
 		private void cmdOK_Click(object sender, EventArgs e)
 		{
-			Program.Engine.OpenDMXInterface = new Enttec.OpenDMX.Interface(0);
-
 			this.DialogResult = System.Windows.Forms.DialogResult.OK;
 			this.Close();
 		}

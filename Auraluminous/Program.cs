@@ -26,10 +26,6 @@ namespace Auraluminous
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            AwesomeControls.Theming.BuiltinThemes.VisualStudio2012Theme theme = new AwesomeControls.Theming.BuiltinThemes.VisualStudio2012Theme(AwesomeControls.Theming.BuiltinThemes.VisualStudio2012Theme.ColorMode.Dark);
-            theme.UseAllCapsMenus = false;
-            AwesomeControls.Theming.Theme.CurrentTheme = theme;
-
             InitializeFixtures();
 
             Program.Engine.AudioPlayer.StateChanged += AudioPlayer_StateChanged;

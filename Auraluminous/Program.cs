@@ -12,7 +12,7 @@ namespace Auraluminous
 {
     static class Program
     {
-        private static Engine mvarEngine = new Engine();
+        private static Engine mvarEngine = null;
         public static Engine Engine { get { return mvarEngine; } }
 
         private static MainWindow mw = null;
@@ -25,6 +25,8 @@ namespace Auraluminous
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+			mvarEngine = new Auraluminous.Engine();
 
             InitializeFixtures();
 

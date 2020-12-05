@@ -17,5 +17,8 @@ namespace Auraluminous.Plugins.uDMX
 		protected override void SetChannelValueInternal(int address, byte value)
 		{
 		}
+		protected override void SetChannelValuesInternal(byte[] values)
+		{
+		}
 	}
 }

@@ -20,10 +20,15 @@ namespace Auraluminous
 		}
 
 		protected abstract void SetChannelValueInternal(int address, byte value);
-
 		public void SetChannelValue(int initialAddress, int relativeAddress, byte value)
 		{
 			SetChannelValueInternal(initialAddress + relativeAddress, value);
+		}
+
+		protected abstract void SetChannelValuesInternal(byte[] values);
+		public void SetChannelValues(byte[] values)
+		{
+			SetChannelValuesInternal(values);
 		}
 
 		protected abstract void ResetInternal();

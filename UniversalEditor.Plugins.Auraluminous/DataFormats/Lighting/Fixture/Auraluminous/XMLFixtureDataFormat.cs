@@ -34,43 +34,43 @@ namespace UniversalEditor.DataFormats.Lighting.Fixture.Auraluminous
             MarkupObjectModel mom = (objectModels.Pop() as MarkupObjectModel);
             FixtureObjectModel fixture = (objectModels.Pop() as FixtureObjectModel);
 
-            MarkupTagElement tagFixtureType = (mom.Elements["AuraluminousFixtureType"] as MarkupTagElement);
-            if (tagFixtureType == null) throw new InvalidDataFormatException("File does not contain top-level \"AuraluminousFixtureType\" tag");
+            MarkupTagElement tagFixtureType = (mom.FindElementUsingSchema(XMLSchemas.Auraluminous, "fixtureType") as MarkupTagElement);
+            if (tagFixtureType == null) throw new InvalidDataFormatException("File does not contain top-level \"fixtureType\" tag");
 
-            MarkupAttribute attID = tagFixtureType.Attributes["ID"];
+            MarkupAttribute attID = tagFixtureType.Attributes["id"];
             if (attID != null)
             {
                 fixture.ID = new Guid(attID.Value);
             }
 
-            MarkupTagElement tagInformation = (tagFixtureType.Elements["Information"] as MarkupTagElement);
+            MarkupTagElement tagInformation = (tagFixtureType.FindElementUsingSchema(XMLSchemas.Auraluminous, "metadata") as MarkupTagElement);
             if (tagInformation != null)
             {
-                MarkupTagElement tagTitle = (tagInformation.Elements["Title"] as MarkupTagElement);
+                MarkupTagElement tagTitle = (tagInformation.FindElementUsingSchema(XMLSchemas.Auraluminous, "model") as MarkupTagElement);
                 if (tagTitle != null) fixture.Model = tagTitle.Value;
 
-                MarkupTagElement tagManufacturer = (tagInformation.Elements["Manufacturer"] as MarkupTagElement);
+                MarkupTagElement tagManufacturer = (tagInformation.FindElementUsingSchema(XMLSchemas.Auraluminous, "manufacturer") as MarkupTagElement);
                 if (tagManufacturer != null) fixture.Manufacturer = tagManufacturer.Value;
             }
 
             #region Channels
             {
-                MarkupTagElement tagChannels = (tagFixtureType.Elements["Channels"] as MarkupTagElement);
+                MarkupTagElement tagChannels = (tagFixtureType.FindElementUsingSchema(XMLSchemas.Auraluminous, "channels") as MarkupTagElement);
                 if (tagChannels != null)
                 {
                     foreach (MarkupElement elChannel in tagChannels.Elements)
                     {
                         MarkupTagElement tagChannel = (elChannel as MarkupTagElement);
                         if (tagChannel == null) continue;
-                        if (tagChannel.FullName != "Channel") continue;
+                        if (!(tagChannel.XMLSchema == XMLSchemas.Auraluminous && tagChannel.Name == "channel")) continue;
 
                         Channel channel = new Channel();
 
-                        MarkupAttribute attChannelID = tagChannel.Attributes["ID"];
+                        MarkupAttribute attChannelID = tagChannel.Attributes["id"];
                         if (attChannelID != null) channel.ID = new Guid(attChannelID.Value);
 
-                        MarkupAttribute attTitle = tagChannel.Attributes["Title"];
-                        if (attTitle != null) channel.Name = attTitle.Value;
+						MarkupAttribute attTitle = tagChannel.Attributes["title"];
+						if (attTitle != null) channel.Name = attTitle.Value;
 
                         fixture.Channels.Add(channel);
                     }
@@ -79,46 +79,47 @@ namespace UniversalEditor.DataFormats.Lighting.Fixture.Auraluminous
             #endregion
             #region Modes
             {
-                MarkupTagElement tagModes = (tagFixtureType.Elements["Modes"] as MarkupTagElement);
+                MarkupTagElement tagModes = (tagFixtureType.FindElementUsingSchema(XMLSchemas.Auraluminous, "modes") as MarkupTagElement);
                 if (tagModes != null)
                 {
-                    foreach (MarkupElement elMode in tagModes.Elements)
-                    {
-                        MarkupTagElement tagMode = (elMode as MarkupTagElement);
-                        if (tagMode == null) continue;
-                        if (tagMode.FullName != "Mode") continue;
+					foreach (MarkupElement elMode in tagModes.Elements)
+					{
+						MarkupTagElement tagMode = (elMode as MarkupTagElement);
+						if (tagMode == null) continue;
+						if (!(tagMode.XMLSchema == XMLSchemas.Auraluminous && tagMode.Name == "mode")) continue;
 
-                        Mode mode = new Mode();
-                        MarkupAttribute attFixtureID = tagMode.Attributes["ID"];
+						Mode mode = new Mode();
+						MarkupAttribute attFixtureID = tagMode.Attributes["id"];
                         if (attFixtureID != null)
                         {
                             mode.ID = new Guid(attFixtureID.Value);
                         }
 
-                        MarkupAttribute attTitle = tagMode.Attributes["Title"];
+                        MarkupAttribute attTitle = tagMode.Attributes["title"];
                         if (attTitle != null)
                         {
                             mode.Name = attTitle.Value;
                         }
 
-                        MarkupTagElement tagChannels = (tagMode.Elements["Channels"] as MarkupTagElement);
+                        MarkupTagElement tagChannels = (tagMode.FindElementUsingSchema(XMLSchemas.Auraluminous, "channels") as MarkupTagElement);
                         if (tagChannels != null)
                         {
                             foreach (MarkupElement elChannel in tagChannels.Elements)
                             {
                                 MarkupTagElement tagChannel = (elChannel as MarkupTagElement);
                                 if (tagChannel == null) continue;
+								if (!(tagChannel.XMLSchema == XMLSchemas.Auraluminous && tagChannel.Name == "channel")) continue;
 
                                 ModeChannel channel = new ModeChannel();
 
-                                MarkupAttribute attModeChannelID = tagChannel.Attributes["ID"];
+                                MarkupAttribute attModeChannelID = tagChannel.Attributes["id"];
                                 if (attModeChannelID != null)
                                 {
                                     Guid id = new Guid(attModeChannelID.Value);
                                     channel.Channel = fixture.Channels[id];
                                 }
 
-                                MarkupAttribute attRelativeAddress = tagChannel.Attributes["RelativeAddress"];
+                                MarkupAttribute attRelativeAddress = tagChannel.Attributes["relativeAddress"];
                                 if (attRelativeAddress != null)
                                 {
                                     channel.RelativeAddress = Int32.Parse(attRelativeAddress.Value);

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ApplicationFramework>
+	<Commands>
+		<Command ID="FileNew" Title="_New">
+			<Shortcut Modifiers="Control" Key="N" />
+		</Command>
+		<Command ID="FileOpen" Title="_Open">
+			<Shortcut Modifiers="Control" Key="O" />
+		</Command>
+		<Command ID="FileReload" Title="_Reload from Disk">
+			<Shortcut Key="F5" />
+		</Command>
+		<Command ID="FileSave" Title="_Save">
+			<Shortcut Modifiers="Control" Key="S" />
+		</Command>
+		<Command ID="FileSaveAs" Title="Save _As...">
+			<Shortcut Modifiers="Control,Shift" Key="S" />
+		</Command>
+		<Command ID="FilePrint" Title="_Print">
+			<Shortcut Modifiers="Control" Key="P" />
+		</Command>
+		<Command ID="FilePrintPreview" Title="Print Pre_view" />
+		<Command ID="FileProperties" Title="P_roperties...">
+			<Shortcut Modifiers="Alt" Key="Enter" />
+		</Command>
+		<Command ID="FileExit" Title="E_xit">
+			<Shortcut Modifiers="Control" Key="Q" />
+		</Command>
+		<Command ID="File" Title="_File">
+			<Items>
+				<CommandReference CommandID="FileNew" />
+				<CommandReference CommandID="FileOpen" />
+				<Separator />
+				<CommandReference CommandID="FileReload" />
+				<Separator />
+				<CommandReference CommandID="FileSave" />
+				<CommandReference CommandID="FileSaveAs" />
+				<Separator />
+				<CommandReference CommandID="FilePrint" />
+				<CommandReference CommandID="FilePrintPreview" />
+				<Separator />
+				<CommandReference CommandID="FileExit" />
+			</Items>
+		</Command>
+		
+		<Command ID="EditUndo" Title="_Undo">
+			<Shortcut Modifiers="Control" Key="Z" />
+		</Command>
+		<Command ID="EditRedo" Title="_Redo">
+			<Shortcut Modifiers="Control" Key="Y" />
+		</Command>
+		<Command ID="EditCut" Title="Cu_t">
+			<Shortcut Modifiers="Control" Key="X" />
+		</Command>
+		<Command ID="EditCopy" Title="_Copy">
+			<Shortcut Modifiers="Control" Key="C" />
+		</Command>
+		<Command ID="EditPaste" Title="_Paste">
+			<Shortcut Modifiers="Control" Key="V" />
+		</Command>
+		<Command ID="EditDelete" Title="_Delete">
+			<Shortcut Key="Del" />
+		</Command>
+		<Command ID="EditSelectAll" Title="Select _All">
+			<Shortcut Modifiers="Control" Key="A" />
+		</Command>
+		<Command ID="EditGoTo" Title="_Go to...">
+			<Shortcut Modifiers="Control" Key="G" />
+		</Command>
+		<Command ID="Edit" Title="_Edit">
+			<Items>
+				<CommandReference CommandID="EditUndo" />
+				<CommandReference CommandID="EditRedo" />
+				<Separator />
+				<CommandReference CommandID="EditCut" />
+				<CommandReference CommandID="EditCopy" />
+				<CommandReference CommandID="EditPaste" />
+				<CommandReference CommandID="EditDelete" />
+				<Separator />
+				<CommandReference CommandID="EditSelectAll" />
+				<CommandReference CommandID="EditGoTo" />
+			</Items>
+		</Command>
+		
+		<Command ID="PlaybackPlay" Title="_Play">
+			<Shortcut Key="Space" />
+		</Command>
+		<Command ID="PlaybackPause" Title="_Pause" />
+		<Command ID="PlaybackStop" Title="_Stop" />
+		<Command ID="Playback" Title="P_layback">
+			<Items>
+				<CommandReference CommandID="PlaybackPlay" />
+				<CommandReference CommandID="PlaybackPause" />
+				<CommandReference CommandID="PlaybackStop" />
+			</Items>
+		</Command>
+		
+		<Command ID="ToolsAdjust" Title="Channel _Adjust..." />
+		<Command ID="ToolsReset" Title="_Reset All Fixtures" />
+		<Command ID="Tools" Title="_Tools">
+			<Items>
+				<CommandReference CommandID="ToolsAdjust" />
+				<Separator />
+				<CommandReference CommandID="ToolsReset" />
+			</Items>
+		</Command>
+		
+		<Command ID="HelpAbout" Title="_About" />
+		<Command ID="Help" Title="_Help">
+			<Items>
+				<CommandReference CommandID="HelpAbout" />
+			</Items>
+		</Command>
+	</Commands>
+</ApplicationFramework>

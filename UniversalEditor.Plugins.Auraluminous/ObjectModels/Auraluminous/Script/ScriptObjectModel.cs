@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UniversalEditor.ObjectModels.Multimedia.Audio.Waveform;
 
 namespace UniversalEditor.ObjectModels.Auraluminous.Script
 {
@@ -9,28 +10,28 @@ namespace UniversalEditor.ObjectModels.Auraluminous.Script
     {
         public override void Clear()
         {
-            mvarAudioFileName = String.Empty;
+			AudioFileName = String.Empty;
         }
 
         public override void CopyTo(ObjectModel where)
         {
             ScriptObjectModel clone = (where as ScriptObjectModel);
-            clone.AudioFileName = (mvarAudioFileName.Clone() as string);
-        }
+            clone.AudioFileName = (AudioFileName.Clone() as string);
+		}
 
-		private string mvarTitle = String.Empty;
-		public string Title { get { return mvarTitle; } set { mvarTitle = value; } }
+		public string Title { get; set; } = String.Empty;
+		public string Artist { get; set; } = String.Empty;
+		public string AudioFileName { get; set; } = String.Empty;
+		public string ArdourFileName { get; set; } = null;
 
-		private string mvarArtist = String.Empty;
-		public string Artist { get { return mvarArtist; } set { mvarArtist = value; } }
+		public WaveformAudioObjectModel Audio { get; set; } = null;
 
-        private string mvarAudioFileName = String.Empty;
-        public string AudioFileName { get { return mvarAudioFileName; } set { mvarAudioFileName = value; } }
+		public Task.TaskCollection Tasks { get; } = new Task.TaskCollection();
+		public Frame.FrameCollection Frames { get; } = new Frame.FrameCollection();
+		public Sequence.SequenceCollection Sequences { get; } = new Sequence.SequenceCollection();
 
-        private Task.TaskCollection mvarTasks = new Task.TaskCollection();
-        public Task.TaskCollection Tasks { get { return mvarTasks; } }
+		public ScriptAction.ScriptActionCollection Actions { get; } = new ScriptAction.ScriptActionCollection();
 
-        private Frame.FrameCollection mvarFrames = new Frame.FrameCollection();
-        public Frame.FrameCollection Frames { get { return mvarFrames; } }
-    }
+		public Fixture.FixtureCollection Fixtures { get; } = new Fixture.FixtureCollection();
+	}
 }

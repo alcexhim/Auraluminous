@@ -42,29 +42,33 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Surodoine\Surodoine\Surodoine.csproj">
-      <Project>{e0897b7b-617a-4709-a4c6-fc0f6b441b2a}</Project>
-      <Name>Surodoine</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\UniversalEditor\CSharp\Libraries\UniversalEditor.Core\UniversalEditor.Core.csproj">
-      <Project>{2d4737e6-6d95-408a-90db-8dff38147e85}</Project>
+    <ProjectReference Include="..\..\UniversalEditor\Libraries\UniversalEditor.Core\UniversalEditor.Core.csproj">
+      <Project>{2D4737E6-6D95-408A-90DB-8DFF38147E85}</Project>
       <Name>UniversalEditor.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\UniversalEditor\CSharp\Libraries\UniversalEditor.Essential\UniversalEditor.Essential.csproj">
-      <Project>{30467e5c-05bc-4856-aadc-13906ef4cadd}</Project>
+    <ProjectReference Include="..\..\UniversalEditor\Libraries\UniversalEditor.Essential\UniversalEditor.Essential.csproj">
+      <Project>{30467E5C-05BC-4856-AADC-13906EF4CADD}</Project>
       <Name>UniversalEditor.Essential</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\UniversalEditor\CSharp\Plugins\UniversalEditor.Plugins.Lighting\UniversalEditor.Plugins.Lighting.csproj">
-      <Project>{1c24f4f8-9d94-4783-b5c0-11564d70b76a}</Project>
+    <ProjectReference Include="..\UniversalEditor.Plugins.Auraluminous\UniversalEditor.Plugins.Auraluminous.csproj">
+      <Project>{EF886E1A-D553-43DA-857C-29DA0D6E0DAE}</Project>
+      <Name>UniversalEditor.Plugins.Auraluminous</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\UniversalEditor\Plugins\UniversalEditor.Plugins.Lighting\UniversalEditor.Plugins.Lighting.csproj">
+      <Project>{1C24F4F8-9D94-4783-B5C0-11564D70B76A}</Project>
       <Name>UniversalEditor.Plugins.Lighting</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\UniversalEditor\CSharp\Plugins\UniversalEditor.Plugins.Multimedia\UniversalEditor.Plugins.Multimedia.csproj">
-      <Project>{be4d0ba3-0888-42a5-9c09-fc308a4509d2}</Project>
+    <ProjectReference Include="..\..\UniversalEditor\Plugins\UniversalEditor.Plugins.Multimedia\UniversalEditor.Plugins.Multimedia.csproj">
+      <Project>{BE4D0BA3-0888-42A5-9C09-FC308A4509D2}</Project>
       <Name>UniversalEditor.Plugins.Multimedia</Name>
     </ProjectReference>
-    <ProjectReference Include="..\UniversalEditor.Plugins.Auraluminous\UniversalEditor.Plugins.Auraluminous.csproj">
-      <Project>{ef886e1a-d553-43da-857c-29da0d6e0dae}</Project>
-      <Name>UniversalEditor.Plugins.Auraluminous</Name>
+    <ProjectReference Include="..\..\MBS.Audio\MBS.Audio\MBS.Audio.csproj">
+      <Project>{E0897B7B-617A-4709-A4C6-FC0F6B441B2A}</Project>
+      <Name>MBS.Audio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\MBS.Framework\MBS.Framework\MBS.Framework.csproj">
+      <Project>{00266B21-35C9-4A7F-A6BA-D54D7FDCC25C}</Project>
+      <Name>MBS.Framework</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using MBS.Audio;
 using UniversalEditor;
 using UniversalEditor.Accessors;
 using UniversalEditor.DataFormats.Auraluminous.Script;
@@ -12,71 +13,84 @@ namespace Auraluminous
 {
 	public class Engine
 	{
-		private List<FixtureObjectModel> mvarFixtures = new List<FixtureObjectModel>();
-		public List<FixtureObjectModel> Fixtures { get { return mvarFixtures; } }
+		public List<FixtureObjectModel> Fixtures { get; } = new List<FixtureObjectModel>();
+		public ITransport Transport { get { return LightingEngine.Transport; } set { LightingEngine.Transport = value; } }
 
-		private ScriptObjectModel mvarScript = null;
-		public ScriptObjectModel Script { get { return mvarScript; } }
+		public LightingEngine LightingEngine { get; } = new LightingEngine();
+		public Device OpenDMXInterface { get; set; } = null;
 
-		private WaveformAudioObjectModel mvarAudio = null;
-		public WaveformAudioObjectModel Audio { get { return mvarAudio; } set { mvarAudio = value; } }
-
-		private Surodoine.AudioPlayer mvarAudioPlayer = new Surodoine.AudioPlayer();
-		public Surodoine.AudioPlayer AudioPlayer { get { return mvarAudioPlayer; } }
-
-		private XMLScriptDataFormat apdf = new XMLScriptDataFormat();
-
-		private LightingEngine lighting = new LightingEngine();
-
-		private Device mvarOpenDMXInterface = null;
-		public Device OpenDMXInterface { get { return mvarOpenDMXInterface; } set { mvarOpenDMXInterface = value; } }
-
-		public void Load(string FileName)
+		public ScriptObjectModel Load(string FileName, bool reload = false)
 		{
-			apdf.Fixtures.Clear();
-			foreach (FixtureObjectModel fixture in mvarFixtures)
+			XMLScriptDataFormat apdf = new XMLScriptDataFormat();
+			foreach (FixtureObjectModel fixture in Fixtures)
 			{
-				apdf.Fixtures.Add(fixture.ID, fixture);
+				apdf.FixtureDefinitions.Add(fixture);
 			}
 
-			mvarScript = new ScriptObjectModel();
-			mvarOpenDMXInterface = Device.GetDefaultDevice();
+			ScriptObjectModel script = new ScriptObjectModel();
+			OpenDMXInterface = Device.GetDefaultDevice();
 			
-			Document.Load(mvarScript, apdf, new FileAccessor(FileName), true);
+			Document.Load(script, apdf, new FileAccessor(FileName), true);
 
-			mvarAudio = UniversalEditor.Common.Reflection.GetAvailableObjectModel<WaveformAudioObjectModel>(mvarScript.AudioFileName);
-		}
-		public void Play()
-		{
-			lighting.CurrentDevice = mvarOpenDMXInterface;
-			lighting.AudioPlayer = mvarAudioPlayer;
-			lighting.Script = mvarScript;
-			mvarScript.Frames.Reset();
-
-			if (mvarAudio != null)
+			if (!reload)
 			{
-				Surodoine.AudioEngine.Initialize();
-				// mvarAudioPlayer.InputDevice = Surodoine.AudioDevice.Devices[7];
-				// mvarAudioPlayer.OutputDevice = Surodoine.AudioDevice.Devices[9];
+				if (script.AudioFileName != null)
+				{
+					if (System.IO.File.Exists(script.AudioFileName))
+					{
+						if (UniversalEditor.Common.Reflection.GetAvailableObjectModel<WaveformAudioObjectModel>(script.AudioFileName, out WaveformAudioObjectModel wave))
+						{
+							script.Audio = wave;
+						}
+					}
+				}
+			}
+			return script;
+		}
 
-				mvarAudioPlayer.InputDevice = Surodoine.AudioDevice.DefaultInput;
-				mvarAudioPlayer.OutputDevice = Surodoine.AudioDevice.DefaultOutput;
+		private ScriptObjectModel _script = null;
+		public void Play(ScriptObjectModel script)
+		{
+			if (script == null)
+				return;
 
-				if (mvarAudioPlayer.IsPlaying) mvarAudioPlayer.Stop();
-				mvarAudioPlayer.Play(mvarAudio, true);
+			if (_script != null)
+			{
+				Stop();
+				_script = null;
 			}
 
-			lighting.Start();
+			_script = script;
+
+			LightingEngine.CurrentDevice = OpenDMXInterface;
+			LightingEngine.Transport = Transport;
+			LightingEngine.Script = script;
+			script.Frames.Reset();
+
+			if (script.Audio != null)
+			{
+				if (Transport.IsPlaying) Transport.Stop();
+				Transport.Play();
+				// AudioPlayer.Play(script.Audio, true);
+			}
+
+			LightingEngine.Start();
 		}
 		public void Stop()
 		{
-			mvarAudioPlayer.Stop();
-			lighting.Stop();
+			Transport.Stop();
+			LightingEngine.Stop();
+
+			if (_script != null)
+			{
+				_script.Frames.Reset();
+				_script = null;
+			}
 			Console.Clear();
 
 			try
 			{
-				mvarOpenDMXInterface.Reset();
+				OpenDMXInterface.Reset();
 			}
 			catch
 			{
@@ -85,15 +99,15 @@ namespace Auraluminous
 
 		public void Pause()
 		{
-			mvarAudioPlayer.Pause();
+			Transport.Pause();
 
-			if (mvarAudioPlayer.State == Surodoine.AudioPlayerState.Paused)
+			if (Transport.State == MBS.Audio.AudioPlayerState.Paused)
 			{
-				lighting.Stop();
+				LightingEngine.Stop();
 			}
 			else
 			{
-				lighting.Start();
+				LightingEngine.Start();
 			}
 		}
 	}

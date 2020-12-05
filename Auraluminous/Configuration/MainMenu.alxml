@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ApplicationFramework>
+	<MainMenu>
+		<Items>
+			<CommandReference CommandID="File" />
+			<CommandReference CommandID="Edit" />
+			<CommandReference CommandID="Playback" />
+			<CommandReference CommandID="Tools" />
+			<CommandReference CommandID="Help" />
+		</Items>
+	</MainMenu>
+</ApplicationFramework>

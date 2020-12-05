@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using MBS.Audio;
 
 namespace UniversalEditor.ObjectModels.Auraluminous.Script
 {
@@ -65,5 +66,28 @@ namespace UniversalEditor.ObjectModels.Auraluminous.Script
 
         private FrameFixture.FrameFixtureCollection mvarFixtures = new FrameFixture.FrameFixtureCollection();
         public FrameFixture.FrameFixtureCollection Fixtures { get { return mvarFixtures; } }
-    }
+
+		public BarBeatTick BarBeatTick { get; set; } = BarBeatTick.Empty;
+		public Sequence Sequence { get; set; } = null; // eww
+		public SequenceReference SequenceReference { get; set; } = null;
+
+		public object Clone()
+		{
+			Frame clone = new Frame();
+			clone.BarBeatTick = BarBeatTick;
+			foreach (FrameFixture fixt in Fixtures)
+			{
+				clone.Fixtures.Add(fixt.Clone() as FrameFixture);
+			}
+			clone.Sequence = Sequence;
+			clone.SequenceReference = SequenceReference;
+			clone.TimeSpan = TimeSpan;
+			return clone;
+		}
+
+		public override string ToString()
+		{
+			return String.Format("( {0} )", BarBeatTick != BarBeatTick.Empty ? BarBeatTick.ToString() : TimeSpan.ToString());
+		}
+	}
 }

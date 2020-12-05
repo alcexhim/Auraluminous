@@ -1,0 +1,18 @@
+﻿<ApplicationFramework>
+	<Commands>
+		<Command ID="Fixture_Add" Title="_Add Fixture" />
+		
+		<Command ID="Auraluminous_ContextMenu_TimelineGroup" Title="Timeline Group Context Menu">
+			<Items>
+				<CommandReference CommandID="Fixture_Add" />
+			</Items>
+		</Command>
+		<Command ID="Auraluminous_ContextMenu_TimelineObject" Title="Timeline Object Context Menu">
+			<Items>
+				<CommandReference CommandID="Fixture_Add" />
+				<Separator />
+				<CommandReference CommandID="FileProperties" />
+			</Items>
+		</Command>
+	</Commands>
+</ApplicationFramework>

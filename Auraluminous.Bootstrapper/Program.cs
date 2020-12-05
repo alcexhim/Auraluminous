@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
-using System.Windows.Forms;
+using MBS.Framework.UserInterface.Dialogs;
 using UniversalEditor.UserInterface;
 
-namespace UniversalEditor.Bootstrapper
+namespace Auraluminous.Bootstrapper
 {
 	static class Program
 	{
@@ -24,7 +24,7 @@ namespace UniversalEditor.Bootstrapper
 			}
 			catch (System.IO.FileNotFoundException ex)
 			{
-				MessageBox.Show("The file '" + ex.FileName + "' is required for this software to run, but is either missing or corrupted.  Please re-install the software and try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageDialog.ShowDialog("The file '" + ex.FileName + "' is required for this software to run, but is either missing or corrupted.  Please re-install the software and try again.", "Error", MessageDialogButtons.OK, MessageDialogIcon.Error);
 				return;
 			}
 		}
@@ -35,7 +35,7 @@ namespace UniversalEditor.Bootstrapper
 			{
 				if (!Engine.Execute())
 				{
-					MessageBox.Show("No engines are available to launch this application.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					MessageDialog.ShowDialog("No engines are available to launch this application.", "Error", MessageDialogButtons.OK, MessageDialogIcon.Error);
 					return;
 				}
 			}

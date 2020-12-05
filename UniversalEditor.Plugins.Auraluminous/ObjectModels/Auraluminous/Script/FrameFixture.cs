@@ -5,17 +5,25 @@ using System.Text;
 
 namespace UniversalEditor.ObjectModels.Auraluminous.Script
 {
-    public class FrameFixture
+    public class FrameFixture : ICloneable
     {
         public class FrameFixtureCollection
             : System.Collections.ObjectModel.Collection<FrameFixture>
         {
         }
 
-        private Fixture mvarFixture = null;
-        public Fixture Fixture { get { return mvarFixture; } set { mvarFixture = value; } }
+		public Fixture Fixture { get; set; } = null;
+		public Command.CommandCollection Commands { get; } = new Command.CommandCollection();
 
-        private Channel.ChannelCollection mvarChannels = new Channel.ChannelCollection();
-        public Channel.ChannelCollection Channels { get { return mvarChannels; } }
-    }
+		public object Clone()
+		{
+			FrameFixture clone = new FrameFixture();
+			clone.Fixture = Fixture;
+			foreach (Command command in Commands)
+			{
+				clone.Commands.Add(command.Clone() as Command);
+			}
+			return clone;
+		}
+	}
 }

@@ -183,7 +183,19 @@ namespace Auraluminous
 						}
 						else if (pixel.Value is Guid)
 						{
-							color = (Color)frame.SequenceReference.ParameterValues[frame.Sequence.Parameters[(Guid)pixel.Value]].Value;
+							if (frame.SequenceReference.ParameterValues[frame.Sequence.Parameters[(Guid)pixel.Value]] != null)
+							{
+								color = (Color)frame.SequenceReference.ParameterValues[frame.Sequence.Parameters[(Guid)pixel.Value]].Value;
+							}
+							else
+							{
+								object efaultValue = frame.Sequence.Parameters[(Guid)pixel.Value].DefaultValue;
+								color = (Color)frame.Sequence.Parameters[(Guid)pixel.Value].DefaultValue;
+							}
+						}
+						else
+						{
+
 						}
 
 						if (pixel.Index is string && (pixel.Index as string).Equals("all"))
@@ -385,6 +397,8 @@ namespace Auraluminous
 				}
 			}
 		}
+
+		private System.Diagnostics.Process pArdour = null;
 
 		public void LoadFile(string fileName, bool reload = false)
         {

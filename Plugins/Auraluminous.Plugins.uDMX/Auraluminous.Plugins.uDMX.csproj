@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\..\Output\Debug</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -25,7 +25,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\..\Output\Release</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -39,13 +39,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\uDMX\uDMX.csproj">
-      <Project>{ac9e14d6-7ef0-4b5f-9645-b033d63de3f2}</Project>
-      <Name>uDMX</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Auraluminous.Engine\Auraluminous.Engine.csproj">
-      <Project>{88676fe6-d6c0-4480-bea0-a649d14cb1bd}</Project>
+    <ProjectReference Include="..\..\Libraries\Auraluminous.Engine\Auraluminous.Engine.csproj">
+      <Project>{88676FE6-D6C0-4480-BEA0-A649D14CB1BD}</Project>
       <Name>Auraluminous.Engine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\uDMX\uDMX.csproj">
+      <Project>{AC9E14D6-7EF0-4B5F-9645-B033D63DE3F2}</Project>
+      <Name>uDMX</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

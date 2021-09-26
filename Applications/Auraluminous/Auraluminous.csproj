@@ -18,7 +18,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\bin\Debug\</OutputPath>
+    <OutputPath>..\..\Output\Debug</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -27,7 +27,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\bin\Release\</OutputPath>
+    <OutputPath>..\..\Output\Release</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -87,53 +87,49 @@
     <EmbeddedResource Include="Configuration\MainMenu.alxml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\MonoMidi\MonoMidi\MonoMidi.csproj">
-      <Project>{ddc1ce36-60e0-4b09-a288-cb14ace252dd}</Project>
-      <Name>MonoMidi</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\MBS.Audio\MBS.Audio\MBS.Audio.csproj">
-      <Project>{e0897b7b-617a-4709-a4c6-fc0f6b441b2a}</Project>
+    <ProjectReference Include="..\..\..\MBS.Audio\MBS.Audio\MBS.Audio.csproj">
+      <Project>{E0897B7B-617A-4709-A4C6-FC0F6B441B2A}</Project>
       <Name>MBS.Audio</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Auraluminous.Engine\Auraluminous.Engine.csproj">
-      <Project>{88676fe6-d6c0-4480-bea0-a649d14cb1bd}</Project>
-      <Name>Auraluminous.Engine</Name>
+    <ProjectReference Include="..\..\..\MBS.Framework\MBS.Framework\MBS.Framework.csproj">
+      <Project>{00266B21-35C9-4A7F-A6BA-D54D7FDCC25C}</Project>
+      <Name>MBS.Framework</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\UniversalEditor\Libraries\UniversalEditor.Compression\UniversalEditor.Compression.csproj">
-      <Project>{3F664673-7E22-4486-9AD0-FC81861D0B78}</Project>
-      <Name>UniversalEditor.Compression</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\UniversalEditor\Libraries\UniversalEditor.Core\UniversalEditor.Core.csproj">
-      <Project>{2D4737E6-6D95-408A-90DB-8DFF38147E85}</Project>
-      <Name>UniversalEditor.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\UniversalEditor\Libraries\UniversalEditor.Essential\UniversalEditor.Essential.csproj">
-      <Project>{30467E5C-05BC-4856-AADC-13906EF4CADD}</Project>
-      <Name>UniversalEditor.Essential</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\UniversalEditor.Plugins.Auraluminous\UniversalEditor.Plugins.Auraluminous.csproj">
-      <Project>{EF886E1A-D553-43DA-857C-29DA0D6E0DAE}</Project>
-      <Name>UniversalEditor.Plugins.Auraluminous</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\UniversalEditor\Plugins\UniversalEditor.Plugins.Lighting\UniversalEditor.Plugins.Lighting.csproj">
-      <Project>{1C24F4F8-9D94-4783-B5C0-11564D70B76A}</Project>
-      <Name>UniversalEditor.Plugins.Lighting</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\UniversalEditor\Plugins\UniversalEditor.Plugins.Multimedia\UniversalEditor.Plugins.Multimedia.csproj">
-      <Project>{BE4D0BA3-0888-42A5-9C09-FC308A4509D2}</Project>
-      <Name>UniversalEditor.Plugins.Multimedia</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\UniversalEditor\Libraries\UniversalEditor.UserInterface\UniversalEditor.UserInterface.csproj">
-      <Project>{8622EBC4-8E20-476E-B284-33D472081F5C}</Project>
-      <Name>UniversalEditor.UserInterface</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\MBS.Framework.UserInterface\Libraries\MBS.Framework.UserInterface\MBS.Framework.UserInterface.csproj">
+    <ProjectReference Include="..\..\..\MBS.Framework.UserInterface\Libraries\MBS.Framework.UserInterface\MBS.Framework.UserInterface.csproj">
       <Project>{29E1C1BB-3EA5-4062-B62F-85EEC703FE07}</Project>
       <Name>MBS.Framework.UserInterface</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\MBS.Framework\MBS.Framework\MBS.Framework.csproj">
-      <Project>{00266B21-35C9-4A7F-A6BA-D54D7FDCC25C}</Project>
-      <Name>MBS.Framework</Name>
+    <ProjectReference Include="..\..\..\UniversalEditor\Libraries\UniversalEditor.Compression\UniversalEditor.Compression.csproj">
+      <Project>{3F664673-7E22-4486-9AD0-FC81861D0B78}</Project>
+      <Name>UniversalEditor.Compression</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\UniversalEditor\Libraries\UniversalEditor.Core\UniversalEditor.Core.csproj">
+      <Project>{2D4737E6-6D95-408A-90DB-8DFF38147E85}</Project>
+      <Name>UniversalEditor.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\UniversalEditor\Libraries\UniversalEditor.Essential\UniversalEditor.Essential.csproj">
+      <Project>{30467E5C-05BC-4856-AADC-13906EF4CADD}</Project>
+      <Name>UniversalEditor.Essential</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Plugins\UniversalEditor.Plugins.Auraluminous\UniversalEditor.Plugins.Auraluminous.csproj">
+      <Project>{EF886E1A-D553-43DA-857C-29DA0D6E0DAE}</Project>
+      <Name>UniversalEditor.Plugins.Auraluminous</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\UniversalEditor\Plugins\UniversalEditor.Plugins.Lighting\UniversalEditor.Plugins.Lighting.csproj">
+      <Project>{1C24F4F8-9D94-4783-B5C0-11564D70B76A}</Project>
+      <Name>UniversalEditor.Plugins.Lighting</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\UniversalEditor\Plugins\UniversalEditor.Plugins.Multimedia\UniversalEditor.Plugins.Multimedia.csproj">
+      <Project>{BE4D0BA3-0888-42A5-9C09-FC308A4509D2}</Project>
+      <Name>UniversalEditor.Plugins.Multimedia</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\MonoMidi\MonoMidi\MonoMidi.csproj">
+      <Project>{DDC1CE36-60E0-4B09-A288-CB14ACE252DD}</Project>
+      <Name>MonoMidi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Libraries\Auraluminous.Engine\Auraluminous.Engine.csproj">
+      <Project>{88676FE6-D6C0-4480-BEA0-A649D14CB1BD}</Project>
+      <Name>Auraluminous.Engine</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

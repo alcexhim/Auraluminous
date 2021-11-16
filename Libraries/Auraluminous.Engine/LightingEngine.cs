@@ -118,7 +118,7 @@ namespace Auraluminous
 											Console.ForegroundColor = ConsoleColor.Cyan;
 											Console.Write("RenderFrame     ");
 											Console.ForegroundColor = ConsoleColor.Yellow;
-											Console.Write(next.TimeSpan.ToString().PadRight(16, '0'));
+											Console.Write(next.Timestamp.ToString().PadRight(16, '0'));
 											Console.ForegroundColor = ConsoleColor.Cyan;
 											Console.Write("    ");
 											Console.ForegroundColor = ConsoleColor.Green;
@@ -135,12 +135,12 @@ namespace Auraluminous
 									}
 									else
 									{
-										if (elapsed.ToTimeSpan() >= next.TimeSpan)
+										if (elapsed >= next.Timestamp)
 										{
 											Console.ForegroundColor = ConsoleColor.Cyan;
 											Console.Write("RenderFrame     ");
 											Console.ForegroundColor = ConsoleColor.Yellow;
-											Console.Write(next.TimeSpan.ToString().PadRight(16, '0'));
+											Console.Write(next.Timestamp.ToString().PadRight(16, '0'));
 											Console.ForegroundColor = ConsoleColor.Cyan;
 											Console.Write("    ");
 											Console.ForegroundColor = ConsoleColor.Green;

@@ -66,6 +66,46 @@ namespace Auraluminous
 			{
 				Program.Engine.OpenDMXInterface.Reset();
 
+				Program.Engine.OpenDMXInterface.SetChannelValue(1, 2, 64);
+				Program.Engine.OpenDMXInterface.SetChannelValue(1, 4, 64);
+				Program.Engine.OpenDMXInterface.SetChannelValue(1, 5, 32);
+				Program.Engine.OpenDMXInterface.SetChannelValue(1, 6, 19);
+				Program.Engine.OpenDMXInterface.SetChannelValue(1, 7, 14);
+				Program.Engine.OpenDMXInterface.SetChannelValue(1, 8, 0);
+				Program.Engine.OpenDMXInterface.SetChannelValue(1, 9, 255);
+				Program.Engine.OpenDMXInterface.SetChannelValue(1, 10, 255); // shutter
+				Program.Engine.OpenDMXInterface.SetChannelValue(1, 12, 200); // macro
+				Program.Engine.OpenDMXInterface.SetChannelValue(56, 2, 64);
+				Program.Engine.OpenDMXInterface.SetChannelValue(56, 4, 64);
+				Program.Engine.OpenDMXInterface.SetChannelValue(56, 5, 32); // color
+				Program.Engine.OpenDMXInterface.SetChannelValue(56, 6, 19); // gobo
+				Program.Engine.OpenDMXInterface.SetChannelValue(56, 7, 14); // gobo rotation
+				Program.Engine.OpenDMXInterface.SetChannelValue(56, 8, 0); // prism
+				Program.Engine.OpenDMXInterface.SetChannelValue(56, 9, 255);
+				Program.Engine.OpenDMXInterface.SetChannelValue(56, 10, 255); // shutter
+				Program.Engine.OpenDMXInterface.SetChannelValue(56, 12, 200); // macro
+
+				int initialAddr = 14;
+				int maxAddr = 39;
+				for (int i = 0; i < maxAddr; i++)
+				{
+					if ((i + 1) % 3 == 0)
+					{
+						// blue
+						Program.Engine.OpenDMXInterface.SetChannelValue(initialAddr, i, 128);
+					}
+					else if ((i + 1) % 2 == 0)
+					{
+						// green
+						Program.Engine.OpenDMXInterface.SetChannelValue(initialAddr, i, 0);
+					}
+					else
+					{
+						// red
+						Program.Engine.OpenDMXInterface.SetChannelValue(initialAddr, i, 128);
+					}
+				}
+
 				if (CurrentScript != null)
 				{
 					foreach (Fixture fixt in CurrentScript.Fixtures)
@@ -126,7 +166,7 @@ namespace Auraluminous
 
 			app.Start();
 
-			MonoMidi.Listener.Stop();
+			// MonoMidi.Listener.Stop();
 		}
 
 		static void JackClient_Process(object sender, JackProcessEventArgs e)
@@ -186,7 +226,7 @@ namespace Auraluminous
 			Program.Engine.Transport.StateChanged += AudioPlayer_StateChanged;
 
 			MonoMidi.Listener.MessageReceived += Listener_MessageReceived;
-			MonoMidi.Listener.Start();
+			// MonoMidi.Listener.Start();
 		}
 
 

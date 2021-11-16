@@ -11,18 +11,18 @@ namespace UniversalEditor.ObjectModels.Auraluminous.Script
         public class FrameCollection
             : System.Collections.ObjectModel.Collection<Frame>
         {
-            private Dictionary<TimeSpan, Frame> framesByTimeSpan = new Dictionary<TimeSpan, Frame>();
+            private Dictionary<AudioTimestamp, Frame> framesByTimeSpan = new Dictionary<AudioTimestamp, Frame>();
 
             protected override void InsertItem(int index, Frame item)
             {
                 base.InsertItem(index, item);
-                framesByTimeSpan[item.TimeSpan] = item;
+                framesByTimeSpan[item.Timestamp] = item;
             }
             protected override void RemoveItem(int index)
             {
-                if (framesByTimeSpan.ContainsKey(this[index].TimeSpan))
+                if (framesByTimeSpan.ContainsKey(this[index].Timestamp))
                 {
-                    framesByTimeSpan.Remove(this[index].TimeSpan);
+                    framesByTimeSpan.Remove(this[index].Timestamp);
                 }
                 base.RemoveItem(index);
             }
@@ -32,7 +32,7 @@ namespace UniversalEditor.ObjectModels.Auraluminous.Script
                 framesByTimeSpan.Clear();
             }
 
-            public Frame this[TimeSpan timespan]
+            public Frame this[AudioTimestamp timespan]
             {
                 get
                 {
@@ -61,8 +61,7 @@ namespace UniversalEditor.ObjectModels.Auraluminous.Script
 			}
 		}
 
-        private TimeSpan mvarTimeSpan = new TimeSpan();
-        public TimeSpan TimeSpan { get { return mvarTimeSpan; } set { mvarTimeSpan = value; } }
+		public AudioTimestamp Timestamp { get; set; } = AudioTimestamp.Empty;
 
         private FrameFixture.FrameFixtureCollection mvarFixtures = new FrameFixture.FrameFixtureCollection();
         public FrameFixture.FrameFixtureCollection Fixtures { get { return mvarFixtures; } }
@@ -81,13 +80,13 @@ namespace UniversalEditor.ObjectModels.Auraluminous.Script
 			}
 			clone.Sequence = Sequence;
 			clone.SequenceReference = SequenceReference;
-			clone.TimeSpan = TimeSpan;
+			clone.Timestamp = Timestamp;
 			return clone;
 		}
 
 		public override string ToString()
 		{
-			return String.Format("( {0} )", BarBeatTick != BarBeatTick.Empty ? BarBeatTick.ToString() : TimeSpan.ToString());
+			return String.Format("( {0} )", BarBeatTick != BarBeatTick.Empty ? BarBeatTick.ToString() : Timestamp.ToString());
 		}
 	}
 }

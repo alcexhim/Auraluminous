@@ -37,8 +37,14 @@ namespace UniversalEditor.ObjectModels.Auraluminous.Script
 			BarBeatTick = time;
 			Data = data.Clone() as byte[];
 		}
+		public CompiledFrame(AudioTimestamp time, byte[] data)
+		{
+			Timestamp = time;
+			Data = data.Clone() as byte[];
+		}
 
 		public BarBeatTick BarBeatTick { get; private set; } = BarBeatTick.Empty;
+		public AudioTimestamp Timestamp { get; private set; } = AudioTimestamp.Empty;
 		public byte[] Data { get; set; } = null;
 	}
 }

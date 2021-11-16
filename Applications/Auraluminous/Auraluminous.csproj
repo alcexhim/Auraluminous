@@ -131,6 +131,14 @@
       <Project>{88676FE6-D6C0-4480-BEA0-A649D14CB1BD}</Project>
       <Name>Auraluminous.Engine</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Plugins\Auraluminous.Plugins.uDMX\Auraluminous.Plugins.uDMX.csproj">
+      <Project>{032C4064-9B30-48BD-BD47-FAA3532A0EA1}</Project>
+      <Name>Auraluminous.Plugins.uDMX</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Plugins\Auraluminous.Plugins.Enttec\Auraluminous.Plugins.Enttec.csproj">
+      <Project>{052CF5D5-C2AD-40D8-A0D4-54978E5452E8}</Project>
+      <Name>Auraluminous.Plugins.Enttec</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controls\" />

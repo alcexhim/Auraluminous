@@ -69,10 +69,10 @@ namespace Auraluminous
 
 			if (script.Audio != null)
 			{
-				if (Transport.IsPlaying) Transport.Stop();
-				Transport.Play();
 				// AudioPlayer.Play(script.Audio, true);
 			}
+			if (Transport.IsPlaying) Transport.Stop();
+			Transport.Play();
 
 			LightingEngine.Start();
 		}

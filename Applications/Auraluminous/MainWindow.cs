@@ -105,40 +105,54 @@ namespace Auraluminous
 			CompiledFrame.CompiledFrameCollection frames = new CompiledFrame.CompiledFrameCollection();
 
 			// reload the script
+			AudioTimestamp tsPrev = AudioTimestamp.Empty;
 			BarBeatTick bbtPrev = BarBeatTick.Empty;
 			CompiledFrame frame = null;
 			byte[] frameData = new byte[512];
 
 			for (int i = 0; i < script.Frames.Count; i++)
 			{
-				if (script.Frames[i].BarBeatTick == bbtPrev)
+				if (script.Frames[i].BarBeatTick != BarBeatTick.Empty)
 				{
-					if (frame == null)
+					if (script.Frames[i].BarBeatTick == bbtPrev)
 					{
-						frame = new CompiledFrame(bbtPrev, frameData);
+						if (frame == null)
+						{
+							frame = new CompiledFrame(bbtPrev, frameData);
+						}
+
+						CompileFrame(frame, script.Frames[i], ref frameData);
+
+						frame.Data = frameData.Clone() as byte[];
 					}
+					else if (script.Frames[i].BarBeatTick >= bbtPrev)
+					{
+						bbtPrev = script.Frames[i].BarBeatTick;
 
-					CompileFrame(frame, script.Frames[i], ref frameData);
+						if (frame != null)
+						{
+							frames.Add(frame);
+						}
+						frame = new CompiledFrame(bbtPrev, frameData);
 
-					frame.Data = frameData.Clone() as byte[];
+						CompileFrame(frame, script.Frames[i], ref frameData);
+
+						frame.Data = frameData.Clone() as byte[];
+					}
 				}
-				else if (script.Frames[i].BarBeatTick >= bbtPrev)
+				else if (script.Frames[i].Timestamp >= tsPrev)
 				{
-					bbtPrev = script.Frames[i].BarBeatTick;
+					tsPrev = script.Frames[i].Timestamp;
 
 					if (frame != null)
 					{
 						frames.Add(frame);
 					}
-					frame = new CompiledFrame(bbtPrev, frameData);
+					frame = new CompiledFrame(tsPrev, frameData);
 
 					CompileFrame(frame, script.Frames[i], ref frameData);
 
 					frame.Data = frameData.Clone() as byte[];
-				}
-				else
-				{
-
 				}
 			}
 

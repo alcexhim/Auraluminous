@@ -57,6 +57,15 @@ namespace UniversalEditor.DataFormats.Auraluminous.Script
 				{
 					script.Artist = tagArtist.Value;
 				}
+
+				MarkupTagElement tagTempo = (tagInformation.Elements["Tempo"] as MarkupTagElement);
+				if (tagTempo != null)
+				{
+					if (Single.TryParse(tagTempo.Attributes["BeatsPerBar"]?.Value, out float beatsPerBar))
+					{
+						script.BeatsPerBar = beatsPerBar;
+					}
+				}
 			}
 
 			MarkupTagElement tagAudio = (tagAuraluminousScript.Elements["Audio"] as MarkupTagElement);
@@ -216,19 +225,23 @@ namespace UniversalEditor.DataFormats.Auraluminous.Script
 						MarkupTagElement tagRepeat = tagFrame.Elements["Repeat"] as MarkupTagElement;
 						MarkupTagElement tagParameterValues = tagFrame.Elements["ParameterValues"] as MarkupTagElement;
 
-						SequenceReference sr = new SequenceReference(seq, XmlToBBT(tagStartTime), GetParameterValues(seq, tagParameterValues), (tagRepeat?.Attributes["Times"]?.Value?.Parse<int>()).GetValueOrDefault(1));
+						SequenceReference sr = new SequenceReference(seq, XmlToBBT(tagStartTime, script), GetParameterValues(seq, tagParameterValues), (tagRepeat?.Attributes["Times"]?.Value?.Parse<int>()).GetValueOrDefault(1));
 						script.Actions.Add(sr);
 
 						// right now we just unroll it directly into Frames, but eventually we'll leave that to the pre-compile stage
-						for (int i = 0; i < seq.Frames.Count; i++)
+						BarBeatTick start = sr.StartTime;
+						for (int q = 0; q < sr.RepeatCount; q++)
 						{
-							Frame frame = seq.Frames[i].Clone() as Frame;
-							frame.SequenceReference = sr;
+							for (int i = 0; i < seq.Frames.Count; i++)
+							{
+								Frame frame = seq.Frames[i].Clone() as Frame;
+								frame.SequenceReference = sr;
 
-							BarBeatTick start = sr.StartTime + seq.Frames[i].BarBeatTick;
-							frame.BarBeatTick = start;
+								start += seq.Frames[i].BarBeatTick;
+								frame.BarBeatTick = start;
 
-							script.Frames.Add(frame);
+								script.Frames.Add(frame);
+							}
 						}
 					}
 				}
@@ -262,11 +275,12 @@ namespace UniversalEditor.DataFormats.Auraluminous.Script
 				int beats = (attBeats?.Value.TryParse<int>(0)).GetValueOrDefault(0);
 				int ticks = (attTicks?.Value.TryParse<int>(0)).GetValueOrDefault(0);
 
-				BarBeatTick bbt = BarBeatTick.FromBBT(bars, beats, ticks);
+				BarBeatTick bbt = BarBeatTick.FromBBT(bars, beats, ticks, script.BeatsPerBar, script.TicksPerBeat);
 				frame.BarBeatTick = bbt;
 			}
 
-			frame.TimeSpan = new TimeSpan(d, h, m, s, ms);
+			int samplesPerSecond = 48000;
+			frame.Timestamp = AudioTimestamp.FromHMS(d, h, m, s, ms, samplesPerSecond);
 
 			MarkupAttribute attTaskID = tagFrame.Attributes["TaskID"];
 			if (attTaskID != null)
@@ -306,12 +320,18 @@ namespace UniversalEditor.DataFormats.Auraluminous.Script
 			return frame;
 		}
 
-		private BarBeatTick XmlToBBT(MarkupTagElement tag)
+		private BarBeatTick XmlToBBT(MarkupTagElement tag, ScriptObjectModel script)
 		{
+			float? beatsPerBar = null, ticksPerBeat = null;
+			if (script.BeatsPerBar != null)
+			{
+				beatsPerBar = script.BeatsPerBar;
+			}
+
 			int bars = (tag.Attributes["Bars"]?.Value?.Parse<int>()).GetValueOrDefault(0);
 			int beats = (tag.Attributes["Beats"]?.Value?.Parse<int>()).GetValueOrDefault(0);
 			int ticks = (tag.Attributes["Ticks"]?.Value?.Parse<int>()).GetValueOrDefault(0);
-			return BarBeatTick.FromBBT(bars, beats, ticks);
+			return BarBeatTick.FromBBT(bars, beats, ticks, beatsPerBar, ticksPerBeat);
 		}
 
 		private SequenceParameterValue[] GetParameterValues(Sequence seq, MarkupTagElement tag)

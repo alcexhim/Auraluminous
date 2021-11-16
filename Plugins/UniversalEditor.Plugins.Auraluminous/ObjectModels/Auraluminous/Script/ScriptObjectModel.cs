@@ -33,5 +33,8 @@ namespace UniversalEditor.ObjectModels.Auraluminous.Script
 		public ScriptAction.ScriptActionCollection Actions { get; } = new ScriptAction.ScriptActionCollection();
 
 		public Fixture.FixtureCollection Fixtures { get; } = new Fixture.FixtureCollection();
+
+		public float? BeatsPerBar { get; set; } = null;
+		public double? TicksPerBeat { get; set; } = null;
 	}
 }
